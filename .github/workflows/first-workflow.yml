@@ -12,3 +12,18 @@ jobs:
           node -v
           npm -v
           echo "This is a multiline command"
+
+  paraller-job:
+    runs-on: macos-latest
+    steps:
+      - name: view sw version
+        run: sw_vers
+
+  dependent-job:
+    runs-on: windows-latest
+    needs: run-shell-commands
+    steps:
+      - name: echo a string
+        run: Write-Ouput "windows job"
+      - name: Error STep
+        run: diudsu
